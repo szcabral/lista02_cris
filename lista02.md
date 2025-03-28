@@ -248,19 +248,18 @@ Implemente um pseudocódigo que receba o valor total da compra e exiba a classif
 
 **Código Implementado:**
 ```javascript
-var totalConta = 120; //Declarando o valor total da compra
+Algoritmo CalcularFrete:
 
-if(totalConta <= 49.99) {
-    console.log("Frete não disponível!")// Caso o valor seja menor que 49.99 será imprimido essa mensagem.
-}
-else if (totalConta >= 50 && totalConta <= 199.99) {
-    console.log("Frete com custo adicional!")// Caso o valor esteja entre 50 e 199.99 será imprimido essa mensagem.
-}
-else {
-    console.log("Frete grátis!")// Caso a variavél não atende os dois metodos acima, será impresso se falso esta mensagem.
-}
+    Definir totalConta como 120  // Declarando o valor total da compra
 
-//Impressão com a váriavel declarada é ""Frete com custo adicional!"
+    Se totalConta <= 49.99:
+        Escrever "Frete não disponível!"  // Caso o valor seja menor que 49.99, exibe essa mensagem
+    Senão Se totalConta >= 50 E totalConta <= 199.99:
+        Escrever "Frete com custo adicional!"  // Caso o valor esteja entre 50 e 199.99, exibe essa mensagem
+    Senão:
+        Escrever "Frete grátis!"  // Caso o valor seja maior que 199.99, exibe essa mensagem
+
+Fim
 
 ```
 ______
@@ -386,6 +385,16 @@ Considere a fórumla de atualização velocidade:
     velocidade = velocidadeInicial - desaceleracao * tempo
 ```
 Seu programa deve determinar quanto tempo será necessário para que a sonda atinja uma velocidade segura de pouso, sem ultrapassar os limites estabelecidos.
+
+**Código Implementado:**
+```javascript
+Algoritmo Soma:
+    Ler número1
+    Ler número2
+    soma = número1 + número2
+    Escrever "A soma é", soma
+FIM
+```
 ______
 
 **10)** Em um sistema de análise financeira, as operações de investimento de uma empresa podem ser representadas por matrizes, onde cada linha representa um tipo de investimento e cada coluna representa um período de tempo.
@@ -418,3 +427,40 @@ Escrever("Total de investimentos acumulados:")
 ImprimirMatriz(totalInvestimentos)  
 ```
 Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
+
+**Código Implementado:**
+```javascript
+Função MultiplicarMatrizesInvestimento(matrizA, matrizB):  
+    //Verifica se o número de colunas de matrizA é igual ao número de linhas de matrizB  
+    Se tamanho(matrizA[0]) ≠ tamanho(matrizB) então:  
+    //Retornar "As matrizes não podem ser multiplicadas. Elas têm dimensões incompatíveis."  
+    
+    Senão:  
+        linhasA <- tamanho(matrizA)  
+        colunasA <- tamanho(matrizA[0])  
+        colunasB <- tamanho(matrizB[0])  
+        matrizResultado <- novaMatriz(linhasA, colunasB)  // Nova matriz para armazenar o resultado da multiplicação  
+
+        //Loop para percorrer cada linha de matrizA e cada coluna de matrizB  
+        Para i de 0 até linhasA-1 faça:  
+            Para j de 0 até colunasB-1 faça:  
+                somaProduto <- 0  // Variável para armazenar a soma dos produtos  
+                
+                //Calcula o produto escalar da linha i de matrizA com a coluna j de matrizB  
+                Para k de 0 até colunasA-1 faça:  
+                    somaProduto <- somaProduto + (matrizA[i][k] * matrizB[k][j])  
+                
+                //Armazena o resultado na posição (i, j) da matrizResultado  
+                matrizResultado[i][j] <- somaProduto  
+
+        //Retornar matrizResultado  
+
+//Exemplo de uso da função  
+investimentosAno1 <- [[1000, 2000], [1500, 2500]]  
+fatoresCrescimento <- [[1.1, 1.05], [1.03, 1.02]]  
+
+resultadoInvestimentos <- MultiplicarMatrizesInvestimento(investimentosAno1, fatoresCrescimento)  
+Escrever("Resultado dos investimentos após multiplicação:")  
+ImprimirMatriz(resultadoInvestimentos)  
+
+```
