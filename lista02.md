@@ -247,7 +247,7 @@ Pedidos de R$200,00 ou mais → "Frete grátis!"
 Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
 
 **Código Implementado:**
-
+```javascript
 var totalConta = 120; //Declarando o valor total da compra
 
 if(totalConta <= 49.99) {
@@ -261,6 +261,8 @@ else {
 }
 
 //Impressão com a váriavel declarada é ""Frete com custo adicional!"
+
+```
 ______
 
 **8)** Considere a implementação da classe base Veiculo em um sistema de modelagem de veículos. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Carro e Moto, que herdam da classe Veiculo, adicionando atributos específicos e métodos para calcular o consumo de combustível de um carro e de uma moto, respectivamente.
@@ -279,7 +281,98 @@ Método CalcularConsumo():
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
 Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
 
+**Código Implementado:**
+```javascript
+Algoritmo SistemaPousoVeiculo:
 
+    // Definição da classe Veiculo (classe mãe)
+    Classe Veiculo:
+        Atributos:
+            modelo
+            ano
+        
+        Método Construtor(modelo, ano):
+            Definir modelo = modelo
+            Definir ano = ano
+        
+        Método CalcularConsumo():
+            Definir consumo como inteiro
+            
+            Se ano <= 2000:
+                consumo = 8  // Consumo de 8 km/l para carros antigos
+            Senão Se ano >= 2001:
+                consumo = 13 // Consumo de 13 km/l para carros mais novos
+
+            Retornar "O consumo médio do " + modelo + " (" + ano + ") é de " + consumo + " km/litro."
+    
+    Fim Classe Veiculo
+
+    // Definição da classe Carro (herda de Veiculo)
+    Classe Carro herda Veiculo:
+        Atributos:
+            passageiros
+        
+        Método Construtor(modelo, ano, passageiros):
+            Chamar o construtor da classe Veiculo (super(modelo, ano))
+            Definir passageiros = passageiros
+        
+        Método CalcularConsumo():
+            Definir consumoBase como inteiro
+            
+            Se ano <= 2000:
+                consumoBase = 8  // Consumo base de 8 km/l para carros antigos
+            Senão Se ano >= 2001:
+                consumoBase = 12  // Consumo base de 12 km/l para carros mais novos
+            
+            Definir consumoFinal como inteiro
+            Se passageiros > 4:
+                consumoFinal = consumoBase - 1  // Ajuste no consumo se o carro tiver mais de 4 passageiros
+            Senão:
+                consumoFinal = consumoBase
+
+            Retornar "O consumo médio do " + modelo + " (" + ano + ") com " + passageiros + " passageiros é de " + consumoFinal + " km/litro."
+
+    Fim Classe Carro
+
+    // Definição da classe Moto (herda de Veiculo)
+    Classe Moto herda Veiculo:
+        Atributos:
+            cilindrada
+        
+        Método Construtor(modelo, ano, cilindrada):
+            Chamar o construtor da classe Veiculo (super(modelo, ano))
+            Definir cilindrada = cilindrada
+        
+        Método CalcularConsumo():
+            Definir consumoBase como inteiro
+            
+            Se ano <= 2000:
+                consumoBase = 20  // Consumo base de 20 km/l para motos antigas
+            Senão Se ano >= 2001:
+                consumoBase = 25  // Consumo base de 25 km/l para motos mais novas
+            
+            Definir consumoFinal como inteiro
+            Se cilindrada > 150:
+                consumoFinal = consumoBase - 2  // Ajuste no consumo para motos com cilindrada maior que 150cc
+            Senão:
+                consumoFinal = consumoBase
+
+            Retornar "O consumo médio da moto " + modelo + " (" + ano + ") com " + cilindrada + "cc é de " + consumoFinal + " km/litro."
+
+    Fim Classe Moto
+
+    // Exemplo de uso:
+    // Criando um objeto do tipo Carro
+    Criar objeto meuCarro da classe Carro com modelo "Fusca", ano 1979, e 5 passageiros
+    Exibir resultado de meuCarro.CalcularConsumo()
+
+    // Criando um objeto do tipo Moto
+    Criar objeto minhaMoto da classe Moto com modelo "Honda CG", ano 2020, e cilindrada 160cc
+    Exibir resultado de minhaMoto.CalcularConsumo()
+
+Fim Algoritmo
+
+```
 ______
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
